@@ -1,0 +1,677 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Invitación Musical — Boda de Gaby & Nachi</title>
+  <meta name="description" content="Has sido seleccionado para tocar en la boda de Gaby y Nachi. ¡Únete a la banda!">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --black: #000000;
+      --black-soft: #0a0a0a;
+      --gray-950: #111111;
+      --gray-900: #181818;
+      --gray-800: #222222;
+      --gray-700: #333333;
+      --gray-600: #555555;
+      --gray-500: #777777;
+      --gray-400: #999999;
+      --gray-300: #bbbbbb;
+      --white: #ffffff;
+      --white-soft: #f0f0f0;
+      --section-gap: 0;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--black);
+      color: var(--white);
+      min-height: 100vh;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    /* ===== ENVELOPE INTRO ===== */
+    .envelope {
+      position: fixed;
+      inset: 0;
+      z-index: 100;
+      background: var(--black);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      cursor: pointer;
+      transition: opacity 0.6s ease, visibility 0.6s ease;
+    }
+    .envelope.hidden { opacity: 0; visibility: hidden; pointer-events: none; }
+
+    .envelope__emoji {
+      font-size: 56px;
+      animation: bounce 2s ease-in-out infinite;
+    }
+    .envelope__label {
+      margin-top: 20px;
+      font-size: 13px;
+      font-weight: 400;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--gray-400);
+      animation: pulse 2s ease-in-out infinite;
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-8px); }
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 0.4; }
+      50% { opacity: 1; }
+    }
+
+    /* ===== LAYOUT ===== */
+    .page { opacity: 0; transition: opacity 0.8s ease; }
+    .page.show { opacity: 1; }
+
+    .section {
+      width: 100%;
+      border-bottom: 1px solid var(--gray-800);
+      padding: 64px 24px;
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .section.visible { opacity: 1; transform: translateY(0); }
+    .section:last-child { border-bottom: none; }
+
+    .section__inner {
+      max-width: 640px;
+      margin: 0 auto;
+    }
+
+    /* ===== HERO SECTION ===== */
+    .hero {
+      padding: 100px 24px 80px;
+      text-align: center;
+      min-height: 100dvh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .hero__inner {
+      max-width: 720px;
+      margin: 0 auto;
+    }
+
+    .hero__tag {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 5px;
+      text-transform: uppercase;
+      color: var(--black);
+      background: var(--white);
+      padding: 6px 18px;
+      border-radius: 100px;
+      margin-bottom: 40px;
+    }
+
+    .hero__greeting {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(48px, 12vw, 96px);
+      font-weight: 700;
+      line-height: 1.0;
+      letter-spacing: -2px;
+      margin-bottom: 8px;
+    }
+
+    .hero__role {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(48px, 12vw, 96px);
+      font-weight: 700;
+      line-height: 1.0;
+      letter-spacing: -2px;
+      color: var(--black);
+      -webkit-text-stroke: 1.5px var(--white);
+      /* Outline text effect */
+    }
+
+    .hero__divider {
+      width: 40px;
+      height: 1px;
+      background: var(--gray-600);
+      margin: 40px auto;
+    }
+
+    .hero__message {
+      font-size: clamp(18px, 4vw, 24px);
+      font-weight: 300;
+      line-height: 1.5;
+      color: var(--gray-300);
+      max-width: 500px;
+      margin: 0 auto;
+    }
+
+    .hero__message strong {
+      color: var(--white);
+      font-weight: 600;
+    }
+
+    .hero__couple {
+      display: block;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(32px, 8vw, 56px);
+      font-weight: 700;
+      letter-spacing: -1px;
+      color: var(--white);
+      margin-top: 20px;
+    }
+
+    .hero__date {
+      margin-top: 24px;
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--gray-500);
+    }
+
+    .hero__scroll {
+      margin-top: 48px;
+      font-size: 12px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--gray-600);
+      animation: pulse 2.5s ease-in-out infinite;
+    }
+    .hero__scroll span {
+      display: block;
+      margin-top: 8px;
+      font-size: 18px;
+    }
+
+    /* ===== SECTION HEADERS ===== */
+    .section__number {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--gray-500);
+      margin-bottom: 16px;
+    }
+
+    .section__title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(28px, 6vw, 40px);
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      line-height: 1.2;
+      margin-bottom: 24px;
+    }
+
+    .section__subtitle {
+      font-size: 16px;
+      font-weight: 300;
+      line-height: 1.8;
+      color: var(--gray-400);
+      max-width: 520px;
+    }
+
+    .section__subtitle strong {
+      color: var(--white);
+      font-weight: 500;
+    }
+
+    /* ===== DYNAMICS GRID ===== */
+    .dynamics {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-top: 36px;
+    }
+
+    .dynamic-card {
+      background: var(--gray-950);
+      border: 1px solid var(--gray-800);
+      border-radius: 16px;
+      padding: 28px 24px;
+      transition: border-color 0.3s ease, transform 0.3s ease;
+    }
+
+    .dynamic-card:hover {
+      border-color: var(--gray-600);
+      transform: translateY(-2px);
+    }
+
+    .dynamic-card__icon {
+      font-size: 28px;
+      margin-bottom: 16px;
+      display: block;
+    }
+
+    .dynamic-card__title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 15px;
+      font-weight: 600;
+      margin-bottom: 8px;
+      color: var(--white);
+    }
+
+    .dynamic-card__text {
+      font-size: 13px;
+      font-weight: 300;
+      line-height: 1.6;
+      color: var(--gray-400);
+    }
+
+    /* ===== SONGS LIST ===== */
+    .songs-list {
+      margin-top: 32px;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .song {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 18px 0;
+      border-bottom: 1px solid var(--gray-900);
+      transition: background 0.2s ease, padding-left 0.3s ease;
+      cursor: default;
+    }
+
+    .song:first-child { border-top: 1px solid var(--gray-900); }
+
+    .song:hover {
+      background: var(--gray-950);
+      padding-left: 12px;
+    }
+
+    .song__num {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--gray-600);
+      min-width: 28px;
+      text-align: right;
+    }
+
+    .song__info { flex: 1; }
+
+    .song__name {
+      font-size: 15px;
+      font-weight: 500;
+      color: var(--white);
+    }
+
+    .song__artist {
+      font-size: 13px;
+      font-weight: 300;
+      color: var(--gray-500);
+      margin-top: 2px;
+    }
+
+    .song__duration {
+      font-size: 13px;
+      font-weight: 400;
+      color: var(--gray-600);
+      font-variant-numeric: tabular-nums;
+    }
+
+    /* Spotify embed */
+    .spotify-wrapper {
+      margin-top: 32px;
+      border-radius: 14px;
+      overflow: hidden;
+      border: 1px solid var(--gray-800);
+    }
+
+    .spotify-wrapper iframe {
+      display: block;
+      width: 100%;
+      border: none;
+    }
+
+    .spotify-note {
+      margin-top: 14px;
+      font-size: 12px;
+      color: var(--gray-600);
+      text-align: center;
+    }
+
+    /* ===== RSVP SECTION ===== */
+    .rsvp {
+      text-align: center;
+      padding: 80px 24px 100px;
+    }
+
+    .rsvp__question {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(40px, 10vw, 72px);
+      font-weight: 700;
+      letter-spacing: -1px;
+      line-height: 1.1;
+      margin-bottom: 16px;
+    }
+
+    .rsvp__text {
+      font-size: 16px;
+      font-weight: 300;
+      color: var(--gray-400);
+      line-height: 1.6;
+      margin-bottom: 40px;
+      max-width: 400px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .rsvp__btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      padding: 20px 48px;
+      background: var(--white);
+      color: var(--black);
+      font-family: 'Inter', sans-serif;
+      font-size: 15px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      text-decoration: none;
+      border-radius: 100px;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .rsvp__btn:hover {
+      transform: scale(1.04);
+      box-shadow: 0 0 0 1px var(--white), 0 20px 60px rgba(255,255,255,0.08);
+    }
+
+    .rsvp__btn:active {
+      transform: scale(0.98);
+    }
+
+    .rsvp__btn-icon { font-size: 20px; }
+
+    /* ===== FOOTER ===== */
+    .footer {
+      text-align: center;
+      padding: 40px 24px;
+      border-top: 1px solid var(--gray-900);
+    }
+
+    .footer__names {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 18px;
+      font-weight: 600;
+      letter-spacing: 1px;
+      margin-bottom: 6px;
+    }
+
+    .footer__year {
+      font-size: 12px;
+      font-weight: 300;
+      color: var(--gray-600);
+      letter-spacing: 3px;
+    }
+
+    /* ===== RESPONSIVE ===== */
+
+    /* Tablet */
+    @media (min-width: 768px) {
+      .section { padding: 80px 40px; }
+      .section__inner { max-width: 680px; }
+      .hero { padding: 120px 40px 100px; }
+      .hero__inner { max-width: 800px; }
+      .rsvp { padding: 100px 40px 120px; }
+    }
+
+    /* Desktop */
+    @media (min-width: 1024px) {
+      .section { padding: 100px 60px; }
+      .section__inner { max-width: 720px; }
+      .hero { padding: 0 60px; min-height: 100vh; }
+      .hero__inner { max-width: 900px; }
+      .hero__greeting, .hero__role {
+        font-size: 96px;
+      }
+      .rsvp { padding: 120px 60px 140px; }
+      .dynamics { gap: 20px; }
+      .dynamic-card { padding: 36px 28px; }
+    }
+
+    /* Small mobile */
+    @media (max-width: 480px) {
+      .dynamics {
+        grid-template-columns: 1fr;
+      }
+      .hero { padding: 80px 20px 60px; }
+      .section { padding: 48px 20px; }
+      .rsvp { padding: 60px 20px 80px; }
+      .rsvp__btn { padding: 18px 36px; font-size: 13px; }
+      .hero__tag { font-size: 10px; padding: 5px 14px; margin-bottom: 28px; }
+    }
+
+    /* ===== SUBTLE BG DOTS ===== */
+    .page::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      opacity: 0.25;
+      background-image: radial-gradient(circle, var(--gray-800) 1px, transparent 1px);
+      background-size: 24px 24px;
+      pointer-events: none;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- PAGE -->
+  <div class="page show" id="page">
+
+    <!-- HERO -->
+    <section class="hero section visible" id="heroSection">
+      <div class="hero__inner">
+        <span class="hero__tag">Fuiste elegido</span>
+        <h1>
+          <div class="hero__greeting">Hola,</div>
+          <div class="hero__role" id="roleText">Músico</div>
+        </h1>
+        <div class="hero__divider"></div>
+        <p class="hero__message">
+          Fuiste seleccionado para <strong>tocar en vivo</strong> en la boda de
+        </p>
+        <span class="hero__couple">Gaby & Nachi</span>
+        <p class="hero__date">Noviembre 2026</p>
+        <div class="hero__scroll">
+          Scroll para más
+          <span>↓</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION: HOW IT WORKS -->
+    <section class="section" id="dynamicsSection">
+      <div class="section__inner">
+        <p class="section__number">01 — La dinámica</p>
+        <h2 class="section__title">Música en vivo toda la noche</h2>
+        <p class="section__subtitle">
+          Queremos que nuestra boda sea <strong>inolvidable</strong> — y para eso armamos algo especial con nuestros amigos y familia músicos.
+        </p>
+        <div class="dynamics">
+          <div class="dynamic-card">
+            <span class="dynamic-card__icon">🎸</span>
+            <h3 class="dynamic-card__title">Varias bandas</h3>
+            <p class="dynamic-card__text">Se formarán distintas bandas mezclando familiares y amigos músicos.</p>
+          </div>
+          <div class="dynamic-card">
+            <span class="dynamic-card__icon">🔄</span>
+            <h3 class="dynamic-card__title">Rotación continua</h3>
+            <p class="dynamic-card__text">Las bandas se van turnando durante la fiesta. Todos tocan, todos disfrutan.</p>
+          </div>
+          <div class="dynamic-card">
+            <span class="dynamic-card__icon">🎶</span>
+            <h3 class="dynamic-card__title">Playlist definida</h3>
+            <p class="dynamic-card__text">Hay una lista de canciones para que vayas ensayando desde ya.</p>
+          </div>
+          <div class="dynamic-card">
+            <span class="dynamic-card__icon">🎉</span>
+            <h3 class="dynamic-card__title">Sin presión</h3>
+            <p class="dynamic-card__text">No importa el nivel. Lo que importa es pasarla bien y hacer historia juntos.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION: PLAYLIST -->
+    <section class="section" id="playlistSection">
+      <div class="section__inner">
+        <p class="section__number">02 — La playlist</p>
+        <h2 class="section__title">Las canciones de la noche</h2>
+        <p class="section__subtitle">
+          Estas son algunas de las canciones que sonarán. <strong>Escuchalas y andá practicando.</strong>
+        </p>
+
+        <div class="songs-list">
+          <div class="song">
+            <span class="song__num">01</span>
+            <div class="song__info">
+              <div class="song__name">Vivir Mi Vida</div>
+              <div class="song__artist">Marc Anthony</div>
+            </div>
+            <span class="song__duration">3:42</span>
+          </div>
+          <div class="song">
+            <span class="song__num">02</span>
+            <div class="song__info">
+              <div class="song__name">Contigo Aprendí</div>
+              <div class="song__artist">Luis Miguel</div>
+            </div>
+            <span class="song__duration">3:28</span>
+          </div>
+          <div class="song">
+            <span class="song__num">03</span>
+            <div class="song__info">
+              <div class="song__name">Eres</div>
+              <div class="song__artist">Café Tacvba</div>
+            </div>
+            <span class="song__duration">4:05</span>
+          </div>
+          <div class="song">
+            <span class="song__num">04</span>
+            <div class="song__info">
+              <div class="song__name">Love On Top</div>
+              <div class="song__artist">Beyoncé</div>
+            </div>
+            <span class="song__duration">4:27</span>
+          </div>
+          <div class="song">
+            <span class="song__num">05</span>
+            <div class="song__info">
+              <div class="song__name">September</div>
+              <div class="song__artist">Earth, Wind & Fire</div>
+            </div>
+            <span class="song__duration">3:35</span>
+          </div>
+        </div>
+
+        <!-- Spotify Embed — Replace with your real playlist URL -->
+        <div class="spotify-wrapper">
+          <iframe
+            src="https://open.spotify.com/embed/playlist/37i9dQZF1DXdPec7aLTmlC?utm_source=generator&theme=0"
+            height="352"
+            allowfullscreen
+            allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+            loading="lazy"
+          ></iframe>
+        </div>
+        <p class="spotify-note">☝️ Reemplazá esta playlist con tu enlace real de Spotify</p>
+      </div>
+    </section>
+
+    <!-- SECTION: RSVP -->
+    <section class="section rsvp" id="rsvpSection">
+      <div class="section__inner">
+        <p class="section__number">03 — Confirmación</p>
+        <h2 class="rsvp__question">¿Te sumás?</h2>
+        <p class="rsvp__text">
+          Confirmanos por WhatsApp que podemos contar con vos. ¡No te lo podés perder!
+        </p>
+        <a
+          href="https://wa.me/5491100000000?text=%C2%A1Hola!%20%F0%9F%8E%B6%20Quiero%20confirmar%20que%20me%20sumo%20a%20tocar%20en%20la%20boda%20de%20Gaby%20y%20Nachi%20%F0%9F%8E%B8"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="rsvp__btn"
+          id="rsvpBtn"
+        >
+          <span class="rsvp__btn-icon">💬</span>
+          <span>Cuenten conmigo</span>
+        </a>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+      <p class="footer__names">Gaby & Nachi</p>
+      <p class="footer__year">Noviembre 2026</p>
+    </footer>
+
+  </div>
+
+  <script>
+    /* ===== ROLE FROM URL ===== */
+    (function() {
+      let role = '';
+
+      // 1. Path: /baterista
+      const segments = window.location.pathname.split('/').filter(Boolean);
+      const last = segments[segments.length - 1];
+      if (last && !last.includes('.')) role = last;
+
+      // 2. Hash: #baterista
+      if (!role && window.location.hash) role = window.location.hash.replace('#', '');
+
+      // 3. Query: ?rol=baterista
+      if (!role) {
+        const p = new URLSearchParams(window.location.search);
+        if (p.get('rol')) role = p.get('rol');
+      }
+
+      if (role) {
+        role = decodeURIComponent(role);
+        const display = role.charAt(0).toUpperCase() + role.slice(1).toLowerCase();
+        document.getElementById('roleText').textContent = display;
+        document.title = `Invitación para ${display} — Boda de Gaby & Nachi`;
+
+        const msg = encodeURIComponent(`¡Hola! 🎶 Soy ${display} y quiero confirmar que me sumo a tocar en la boda de Gaby y Nachi 🎸`);
+        document.getElementById('rsvpBtn').href = `https://wa.me/5491100000000?text=${msg}`;
+      }
+    })();
+
+    /* ===== SCROLL REVEAL ===== */
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) e.target.classList.add('visible');
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -60px 0px' });
+
+    document.querySelectorAll('.section').forEach(s => observer.observe(s));
+  </script>
+
+</body>
+</html>
