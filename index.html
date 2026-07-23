@@ -323,34 +323,6 @@
       margin-top: 2px;
     }
 
-    .song__duration {
-      font-size: 13px;
-      font-weight: 400;
-      color: var(--gray-600);
-      font-variant-numeric: tabular-nums;
-    }
-
-    /* Spotify embed */
-    .spotify-wrapper {
-      margin-top: 32px;
-      border-radius: 14px;
-      overflow: hidden;
-      border: 1px solid var(--gray-800);
-    }
-
-    .spotify-wrapper iframe {
-      display: block;
-      width: 100%;
-      border: none;
-    }
-
-    .spotify-note {
-      margin-top: 14px;
-      font-size: 12px;
-      color: var(--gray-600);
-      text-align: center;
-    }
-
     /* ===== RSVP SECTION ===== */
     .rsvp {
       text-align: center;
@@ -509,9 +481,10 @@
     <section class="section" id="dynamicsSection">
       <div class="section__inner">
         <p class="section__number">01 — La dinámica</p>
-        <h2 class="section__title">Música en vivo toda la noche</h2>
+        <h2 class="section__title">Música en vivo todo el día</h2>
         <p class="section__subtitle">
           Queremos que nuestra boda sea <strong>inolvidable</strong> — y para eso armamos algo especial con nuestros amigos y familia músicos.
+          Cada músico deberá elegir un tema propio, agradable o cristiano, e instrumentalizarlo en los géneros definidos.
         </p>
         <div class="dynamics">
           <div class="dynamic-card">
@@ -526,8 +499,8 @@
           </div>
           <div class="dynamic-card">
             <span class="dynamic-card__icon">🎶</span>
-            <h3 class="dynamic-card__title">Playlist definida</h3>
-            <p class="dynamic-card__text">Hay una lista de canciones para que vayas ensayando desde ya.</p>
+            <h3 class="dynamic-card__title">Tema a elección</h3>
+            <p class="dynamic-card__text">Elegí un tema agradable o cristiano y preparalo en formato instrumental.</p>
           </div>
           <div class="dynamic-card">
             <span class="dynamic-card__icon">🎉</span>
@@ -538,69 +511,53 @@
       </div>
     </section>
 
-    <!-- SECTION: PLAYLIST -->
-    <section class="section" id="playlistSection">
+    <!-- SECTION: GENRES -->
+    <section class="section" id="genresSection">
       <div class="section__inner">
-        <p class="section__number">02 — La playlist</p>
-        <h2 class="section__title">Las canciones de la noche</h2>
+        <p class="section__number">02 — Géneros definidos</p>
+        <h2 class="section__title">Los estilos para preparar</h2>
         <p class="section__subtitle">
-          Estas son algunas de las canciones que sonarán. <strong>Escuchalas y andá practicando.</strong>
+          No habrá una lista cerrada: cada tema elegido deberá adaptarse a alguno de estos géneros.
+          <strong>La idea es reinterpretarlo con libertad y buen gusto.</strong>
         </p>
 
         <div class="songs-list">
           <div class="song">
             <span class="song__num">01</span>
             <div class="song__info">
-              <div class="song__name">Vivir Mi Vida</div>
-              <div class="song__artist">Marc Anthony</div>
+              <div class="song__name">Jazz</div>
+              <div class="song__artist">Armonías cálidas, dinámica suave y espacio para improvisar.</div>
             </div>
-            <span class="song__duration">3:42</span>
           </div>
           <div class="song">
             <span class="song__num">02</span>
             <div class="song__info">
-              <div class="song__name">Contigo Aprendí</div>
-              <div class="song__artist">Luis Miguel</div>
+              <div class="song__name">Blues</div>
+              <div class="song__artist">Groove marcado, intención expresiva y solos con carácter.</div>
             </div>
-            <span class="song__duration">3:28</span>
           </div>
           <div class="song">
             <span class="song__num">03</span>
             <div class="song__info">
-              <div class="song__name">Eres</div>
-              <div class="song__artist">Café Tacvba</div>
+              <div class="song__name">Country</div>
+              <div class="song__artist">Ritmo simple, sonido acústico y espíritu alegre.</div>
             </div>
-            <span class="song__duration">4:05</span>
           </div>
           <div class="song">
             <span class="song__num">04</span>
             <div class="song__info">
-              <div class="song__name">Love On Top</div>
-              <div class="song__artist">Beyoncé</div>
+              <div class="song__name">Tiny Desk</div>
+              <div class="song__artist">Arreglo íntimo, creativo y pensado para tocar en vivo.</div>
             </div>
-            <span class="song__duration">4:27</span>
           </div>
           <div class="song">
             <span class="song__num">05</span>
             <div class="song__info">
-              <div class="song__name">September</div>
-              <div class="song__artist">Earth, Wind & Fire</div>
+              <div class="song__name">Salsa</div>
+              <div class="song__artist">Ritmo tropical, energía contagiosa y sabor latino.</div>
             </div>
-            <span class="song__duration">3:35</span>
           </div>
         </div>
-
-        <!-- Spotify Embed — Replace with your real playlist URL -->
-        <div class="spotify-wrapper">
-          <iframe
-            src="https://open.spotify.com/embed/playlist/37i9dQZF1DXdPec7aLTmlC?utm_source=generator&theme=0"
-            height="352"
-            allowfullscreen
-            allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-            loading="lazy"
-          ></iframe>
-        </div>
-        <p class="spotify-note">☝️ Reemplazá esta playlist con tu enlace real de Spotify</p>
       </div>
     </section>
 
@@ -610,7 +567,7 @@
         <p class="section__number">03 — Confirmación</p>
         <h2 class="rsvp__question">¿Te sumás?</h2>
         <p class="rsvp__text">
-          Confirmanos por WhatsApp que podemos contar con vos. ¡No te lo podés perder!
+          Confirmanos por WhatsApp que podemos contar con vos. Esto es sorpresa, así que por favor no lo divulgues.
         </p>
         <a
           href="https://wa.me/5491100000000?text=%C2%A1Hola!%20%F0%9F%8E%B6%20Quiero%20confirmar%20que%20me%20sumo%20a%20tocar%20en%20la%20boda%20de%20Gaby%20y%20Nachi%20%F0%9F%8E%B8"
